@@ -1,0 +1,16 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    text-decoration: transparent;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.images {
+    display: flex;
+    justify-content: center;
+}
