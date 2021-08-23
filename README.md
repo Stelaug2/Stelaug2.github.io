@@ -1,3 +1,3 @@
 # Stelaug2.github.io
 This is a school? project?
-you are welcome to use my code as you like just give me some cred pls. Or don't I don't Care.
+you are welcome to use my code as you like just give me some cred pls. Or don't I don't care.
