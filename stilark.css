@@ -2,11 +2,13 @@ body {
     background-color: black;
     color: #17D4FE;
     margin: 0;
+    
 }
 
 .parent {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    height: 100%;
+    grid-template-columns: 0.4fr repeat(3, 1fr);
     grid-template-rows: repeat(5, 1fr);
     grid-column-gap: 0px;
     grid-row-gap: 0px;
@@ -38,15 +40,19 @@ body {
 .sidebar {
     margin: 0;
     padding: 0;
-    width: 150px;
+    width: 125px;
     background-color: #f1f1f1;
     height: 100%;
-    overflow: auto;
+    overflow:auto;
+    display: flex;
+    flex-direction: column;
+    position:fixed;
 }
   
 .sidebar a {
     padding: 16px;
     text-decoration: none;
+    flex: 1;
 }
    
 .sidebar a.active {
