@@ -2,7 +2,7 @@ body {
     background-color: black;
     color: #17D4FE;
     display: flex;
-    justify-content: center;
+    margin: 0;
 }
 
 h1 {
@@ -27,7 +27,7 @@ h1 {
     position: fixed;
     height: 100%;
     overflow: auto;
-  }
+}
   
 .sidebar a {
     display: block;
