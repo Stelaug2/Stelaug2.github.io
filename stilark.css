@@ -29,41 +29,41 @@ h1 {
     overflow: auto;
   }
   
-  .sidebar a {
+.sidebar a {
     display: block;
     padding: 16px;
     text-decoration: none;
-  }
+}
    
-  .sidebar a.active {
+.sidebar a.active {
     background-color: #04AA6D;
     color: white;
-  }
+}
   
-  .sidebar a:hover:not(.active) {
+.sidebar a:hover:not(.active) {
     background-color: #555;
     color: white;
-  }
+}
   
-  div.content {
+div.content {
     margin-left: 200px;
     padding: 1px 16px;
     height: 1000px;
-  }
+}
   
-  @media screen and (max-width: 700px) {
+@media screen and (max-width: 700px) {
     .sidebar {
       width: 100%;
       height: auto;
       position: relative;
-    }
-    .sidebar a {float: left;}
-    div.content {margin-left: 0;}
-  }
+}
+.sidebar a {float: left;}
+div.content {margin-left: 0;}
+}
   
-  @media screen and (max-width: 400px) {
+@media screen and (max-width: 400px) {
     .sidebar a {
       text-align: center;
       float: none;
     }
-  }
+}
