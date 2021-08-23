@@ -1,6 +1,7 @@
 body {
     background-color: black;
-    color: #17D4FE;
+    color: white;
+    font-family: 'Besley', serif;
     margin: 0;
 }
 
@@ -26,16 +27,28 @@ body {
 
 #tid {
     font-size: 100px;
-    font-family: 'pixel unicode';
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     letter-spacing: 7px;
 }
 
 .sussy {
-    height: 100%;
-    width: 100%;
+    border: 5px solid darkgrey;
+    border-radius: 10%;
+    background-color: darkgrey;
+}
+
+iframe {
+    border-radius: 15%;
+    height: 50%;
+}
+
+#dream {
+    background-color: #401804;
 }
 
 .sidebar {
+    display: flex;
+    flex-direction: column;
     margin: 0;
     padding: 0;
     width: 150px;
