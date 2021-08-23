@@ -2,6 +2,7 @@ body {
     background-color: black;
     color: #17D4FE;
     display: flex;
+    justify-content: center;
 }
 
 h1 {
