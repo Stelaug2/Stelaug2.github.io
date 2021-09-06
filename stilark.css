@@ -32,9 +32,10 @@ body {
 }
 
 .sussy {
-    border: 5px solid darkgrey;
+    /*border: 5px solid darkgrey;
     border-radius: 10%;
     background-color: darkgrey;
+    */
 }
 
 iframe {
@@ -52,7 +53,7 @@ iframe {
     margin: 0;
     padding: 0;
     width: 150px;
-    background-color: #f1f1f1;
+    background-color: #222222;
     height: 100%;
     overflow: auto;
 }
@@ -60,10 +61,6 @@ iframe {
 .sidebar a {
     padding: 16px;
     text-decoration: none;
-}
-   
-.sidebar a.active {
-    background-color: #04AA6D;
     color: white;
 }
   
