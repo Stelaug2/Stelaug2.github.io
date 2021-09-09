@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildestørrelse</title>
+</head>
+<body>
+    <style>
+        body {display: flex; align-items: center; background-color: black; flex-direction: column;}
+        #newpic {background-color: #3e4a5e; color: #E4E4F4; border-radius: 20%; height: 30px; width: 75px;}
+        #newpic:hover {background-color: #e4eeff; color: black;}
+
+    </style>
+
+    <!--<button id="size">Large</button>!-->
+    <button id="newpic">Duck?</button>
+    <p id="text"></p>
+
+    <figure>
+        <img id="picture" src="bilder/pictures-of-duck.jpg" alt="a duck" width="300px" height="450px">
+    </figure>
+
+
+    <script>
+
+        let picture = document.getElementById("picture");
+        
+        
+
+        let newpic = document.getElementById("newpic");
+        newpic.addEventListener("click", changePic);
+
+        function changePic() {
+
+            let max = 5
+            let min = 0
+            let x = Math.floor(Math.random() * (max - min + 1) ) + min;
+
+            let text;
+
+            switch(x) {
+                case 0: 
+                    picture.src = "bilder/pictures-of-duck.jpg";
+                    text = "Duck!";
+                    break;
+                case 1:
+                    picture.src = "bilder/duck2.jfif";
+                    text = "Duck!";
+                    break;
+                case 2:
+                    picture.src = "bilder/duck3.jfif";
+                    text = "Duck!";
+                    break;
+                case 3: 
+                    picture.src = "bilder/duck4.jfif";
+                    text = "Duck!";
+                    break;
+                case 4:
+                    picture.src = "bilder/duck5.jfif";
+                    text = "Duck!";
+                    break;
+                case 5:
+                    picture.src = "bilder/goose.jfif";
+                    text = "GOOSE";
+                    break;
+            }
+
+            if (text === "GOOSE") {
+                document.getElementById("text").style.color = "#EF233C";
+                document.getElementById("picture").style.height = "600px";
+                document.getElementById("picture").style.width = "400px";
+            }
+            else {
+                document.getElementById("text").style.color = "#2B6ABC";
+                document.getElementById("picture").style.height = "450px";
+                document.getElementById("picture").style.width = "300px";
+            }
+            document.getElementById("text").innerHTML = text;
+            console.log(text + x)
+        }
+
+    </script>
+</body>
+</html>
