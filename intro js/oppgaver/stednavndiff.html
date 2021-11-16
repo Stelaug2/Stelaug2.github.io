@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stedsnavn differanse</title>
+</head>
+<body>
+    <p>
+        <input type="text" id="stedEn" value="" placeholder="Stedsnavn 1">
+        <input type="text" id="stedTo" value="" placeholder="Stedsnavn 2">
+        <button id="finnDiff">Finn differansen</button>
+    </p>
+    <p id="tekst"></p>
+
+    <script>
+            
+        let tekst = document.getElementById("tekst");
+        let finnDiff = document.getElementById("finnDiff");
+        finnDiff.addEventListener("click", stedDiff);
+
+        function stedDiff() {
+            let stedEn = document.getElementById("stedEn").value;
+            let stedTo = document.getElementById("stedTo").value;
+
+            tekst.innerHTML = "Det første stedsnavnet er " + stedEn + " og det andre stedsnavnet er " + stedTo + "!";
+
+            let lengdeEn = stedEn.length;
+            let lengdeTo = stedTo.length;
+
+            tekst.innerHTML += " Det første stedsnavnet har " + lengdeEn + " tegn og det andre stedsnavnet har " + lengdeTo + " tegn!"
+
+            if(lengdeEn < lengdeTo){
+                let stedsNavnDiff = Math.abs(lengdeTo - lengdeEn);
+                tekst.innerHTML += " Differansen mellom dem er " + stedsNavnDiff + " tegn!";
+            }
+            else if(lengdeEn === lengdeTo) {
+                tekst.innerHTML = "De har like mange tegn!";
+            }
+            else {
+                let stedsNavnDiff = Math.abs(lengdeEn - lengdeTo);
+                tekst.innerHTML += " Differansen mellom dem er " + stedsNavnDiff + " tegn!";
+            }
+        }
+
+
+    </script>
+
+</body>
+</html>

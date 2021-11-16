@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terninger</title>
+</head>
+<body>
+
+    <style>
+        body {display: flex; align-items: center; background-color: black; flex-direction: column; color: white;}
+    </style>
+    
+    <button id="roll">Roll dice</button>
+    <p id="tekst1"></p>
+    <img src="/bilder/terning1.png" id="roll1" width="100px" height="100px">
+    <p id="tekst2"></p>
+    <img src="/bilder/terning2.png" id="roll2" width="100px" height="100px">
+    <p id="tekst3"></p>
+    <img src="/bilder/terning3.png" id="roll3" width="100px" height="100px">
+    <p id="tekst"></p>
+
+    <script>
+
+        document.getElementById("roll").addEventListener("click", rollAll);
+        var img1 = document.getElementById("roll1");
+        var img2 = document.getElementById("roll2");
+        var img3 = document.getElementById("roll3");
+
+        img1.addEventListener("click", f_hold1);
+        img2.addEventListener("click", f_hold2);
+        img3.addEventListener("click", f_hold3);
+        
+        function rollDice() {
+            const max = 6
+            const min = 1
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+
+        var hold1 = false
+        var hold2 = false
+        var hold3 = false
+
+        var roll1 = 1
+        var roll2 = 2
+        var roll3 = 3
+
+        function rollAll() {
+            if(hold1 === false) {
+                roll1 = rollDice();
+                img1.src = "/bilder/terning" + roll1 + ".png";
+                console.log(roll1)
+            }
+            else {
+                document.getElementById("tekst1").innerHTML = "The die is on hold"
+            }
+            if(hold2 === false) {
+                roll2 = rollDice();
+                img2.src = "/bilder/terning" + roll2 + ".png";
+                console.log(roll2)
+            }
+            else {
+                document.getElementById("tekst2").innerHTML = "The die is on hold"
+            }
+            if(hold3 === false) {
+                roll3 = rollDice();
+                img3.src = "/bilder/terning" + roll3 + ".png";
+                console.log(roll3)
+            }
+            else {
+                document.getElementById("tekst3").innerHTML = "The die is on hold"
+            }
+
+        }
+
+
+        function f_hold1() {
+            if(hold1 === false) {
+                hold1 = true
+                img1.style.border = "1px solid red"
+            }
+            else {
+                hold1 = false
+                img1.style.border = ""
+            }
+        }
+        function f_hold2() {
+            if(hold2 === false) {
+                hold2 = true
+                img2.style.border = "1px solid red"
+            }
+            else {
+                hold2 = false
+                img2.style.border = ""
+            }
+        }
+        function f_hold3() {
+            if(hold3 === false) {
+                hold3 = true
+                img3.style.border = "1px solid red"
+            }
+            else {
+                hold3 = false
+                img3.style.border = ""
+            }
+        }
+
+    </script>
+
+</body>
+</html>

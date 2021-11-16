@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Førerkort</title>
+</head>
+<body>
+
+    <input type="text" placeholder="Skriv inn alderen din" id="alder" value="">
+    <button id="knapp">Førerkort</button>
+    <p id="tekst"></p>
+    
+    <script>
+
+        document.getElementById("knapp").addEventListener("click", førerkort);
+
+        function førerkort() {
+
+            let alder = parseInt(document.getElementById("alder").value);
+
+            if(typeof alder === "number") {
+                console.log("sheesh")
+                if(alder < 16) {
+                    document.getElementById("tekst").innerHTML = "Du er for ung til å få førerkort";
+                }
+                else if(alder >= 16 && alder < 18) {
+                    document.getElementById("tekst").innerHTML = "Du kan få førerkort til moped";
+                }
+                else if(alder >= 18 && alder < 21) {
+                    document.getElementById("tekst").innerHTML = "Du kan få førerkort til moped og bil";
+                }
+                else if(alder >= 21 && alder < 24) {
+                    document.getElementById("tekst").innerHTML = "Du kan få førerkort til moped, bil og lastebil";
+                }
+                else{
+                    document.getElementById("tekst").innerHTML = "Du kan få førerkort til moped, bil, lastebil og buss"
+                }
+            }
+            else {
+                console.log("ugh")
+                document.getElementById("tekst").innerHTML = "Må skrive et tall"
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gjett tallet</title>
+</head>
+<body>
+    <style>
+        body {display: flex; align-items: center; justify-content: center; background-color: black; flex-direction: column; color: white; height: 100vh; margin: 0;}
+        input {background-color: #3e4a5e; color: white; border-radius: 15%; height: 40px; width: 175px;}  
+        button {border: none;}
+    </style>
+
+    <h1>Gjett tallet. Mellom 0 og 10</h1>
+    <input type="tekst" placeholder="Gjett tallet" id="gjett" value="">
+    <button id="knapp">Valget mitt er satt</button>
+    <p id="tekst"></p>
+    <img src="" alt="" id="bilde">
+    
+    <script>
+
+        document.getElementById("knapp").addEventListener("click", spill);
+        const max = 10;
+        const min = 0;
+        const tall = Math.floor(Math.random() * (max - min + 1) ) + min;
+        var antGjett = 0
+
+        function spill() {
+            var gjett = parseInt(document.getElementById("gjett").value);
+            console.log(gjett)
+
+            if (gjett < 0 || gjett > 10) {
+                console.log("hnnn");
+                document.getElementById("tekst").innerHTML = "Tallet er mellom 0 og 10 så du kommer ingen vei med dette";
+            }
+
+            else if (gjett === tall) {
+                console.log("gah");
+                document.getElementById("tekst").innerHTML = "Du gjettet rett!!";
+                document.getElementById("bilde").src = "/bilder/duck2.jfif";
+                document.getElementById("knapp").style.visibility = "hidden"
+            }
+
+            else if (gjett > tall) {
+                console.log("Sheesh");
+                document.getElementById("tekst").innerHTML = "For høyt";
+                antGjett++
+            }
+            else if (gjett < tall) {
+                console.log("grr");
+                document.getElementById("tekst").innerHTML = "For lavt";
+                antGjett++
+            }
+
+            if (antGjett === 3) {
+                document.getElementById("bilde").src = "/bilder/sad.png";
+                document.getElementById("bilde").style.height = "200px";
+                document.getElementById("bilde").style.width = "200px";
+                document.getElementById("tekst").innerHTML = "Du har ikke flere gjett igjen. Du tapte :'( Tallet var " + tall;
+                document.getElementById("knapp").style.visibility = "hidden"
+
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Egg</title>
+</head>
+<body>
+    <style>
+        body {display: flex; align-items: center; background-color: black; flex-direction: column; color: white;}
+    </style>
+    
+    <h1>Klikk på egget</h1>
+    <img id="eggBilde" src="/bilder/Egg1.jpg">
+    <p id="tekst">Hvem kan være inni egget?</p>
+
+    <script>
+        var bilde = document.getElementById("eggBilde");
+        bilde.addEventListener("click", eggBilde)
+
+        var klikk = 0
+        function eggBilde() {
+            klikk++;
+
+            if(klikk === 1) {
+                bilde.src = "/bilder/Egg2.jpg";
+            }
+            else if(klikk === 2) {
+                bilde.src = "/bilder/Egg3.jpg";
+            }
+            else if(klikk === 3) {
+                bilde.src = "/bilder/Egg4.jpg";
+                document.getElementById("tekst").innerHTML = "Ser du hvem det er?";
+            }
+            else if(klikk === 4) {
+                bilde.src = "/bilder/Egg5.jpg";
+                document.getElementById("tekst").innerHTML = "Der er en kylling! Trykk igjen så starter spillet på nytt";
+            }
+            else {
+                bilde.src = "/bilder/Egg1.jpg";
+                document.getElementById("tekst").innerHTML = "Hvem kan være inni egget?";
+            }
+            if(klikk === 5) {
+                klikk = 0
+            }
+            console.log(klikk)
+        }
+    </script>
+
+</body>
+</html>

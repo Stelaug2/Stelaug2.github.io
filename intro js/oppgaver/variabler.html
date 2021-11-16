@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variabler</title>
+</head>
+<body>
+    <h1>Enjoy</h1>
+
+    <p id="navn"></p>
+    <p id="sum"></p>
+    
+    <script>
+        function quiz() {
+            //asks for a name
+            var navn = prompt("Hva heter du?");
+            //capitalizes the first letter of said name
+            var cap = navn.charAt(0).toUpperCase() + navn.slice(1)
+            return "Hei " + cap;
+        }
+
+        function sum() {
+            //asks for a number
+            let numOne = Number(prompt("Skriv et tall"));
+            let numTwo = Number(prompt("Skriv et tall til"));
+            //adds the numbers to create a sum
+            let sum = numOne + numTwo
+            //rounds the sum to closest whole number
+            let round = Math.round(sum)
+            return "Det første tallet du skrev var " + numOne + " og det andre tallet du skrev var " + numTwo + " og til sammen blir det " + sum + " avrundet blir det " + round + " .";
+        }
+        //connects the IDs in the html with functions
+        document.getElementById("navn").innerHTML = quiz()
+        document.getElementById("sum").innerHTML = sum()
+    </script>
+</body>
+</html>

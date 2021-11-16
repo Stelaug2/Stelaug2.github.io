@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildegalleri</title>
+</head>
+<body>
+    <style>
+        body {display: flex; align-items: center; background-color: black; flex-direction: column; color: white;}
+        #bilde {width: 300px; height: 200px;}
+        #neste {background-color: #3e4a5e; color: #E4E4F4; border-radius: 20%; height: 30px; width: 75px;}
+        #neste:hover {background-color: #e4eeff; color: black;}
+        #forrige {background-color: #3e4a5e; color: #E4E4F4; border-radius: 20%; height: 30px; width: 75px;}
+        #forrige:hover {background-color: #e4eeff; color: black;}
+    </style>
+    
+    <h1>Bilder</h1>
+    <p><hr></p>
+
+    <img id="bilde" src="" alt="">
+    <button id="neste">Neste</button>
+    <button id="forrige">Forrige</button>
+
+    <script>
+
+        let arrBilder = ["pictures-of-duck.jpg", "duck2.jfif", "duck3.jfif", "duck4.jfif", "duck5.jfif", "goose.jfif"];
+
+        let bildeNr = 0;
+        document.getElementById("bilde").src = "/bilder/" + arrBilder[bildeNr];
+
+        document.getElementById("neste").addEventListener("click", nesteBilde);
+        document.getElementById("forrige").addEventListener("click", forrigeBilde);
+
+        function nesteBilde(n) {
+            console.log("ugh");
+            if(bildeNr >= arrBilder.length -1) {
+                bildeNr = 0;
+            }
+            else {
+                bildeNr++;
+            }
+
+            settBilde(bildeNr);
+        }
+
+        function forrigeBilde(n) {
+            console.log("gah");
+            if(bildeNr <= 0) {
+                bildeNr = arrBilder.length -1;
+            }
+            else {
+                bildeNr--
+            }
+            settBilde(bildeNr);
+        }
+        
+        function settBilde(bildeInn) {
+            document.getElementById("bilde").src = "/bilder/" + arrBilder[bildeInn];
+        }
+
+    </script>
+
+</body>
+</html>

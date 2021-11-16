@@ -1,0 +1,32 @@
+body {
+    background-color: black;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Header Header Header"
+      "char1 char1 char1"
+      "char2 char2 char2"
+      "char3 char3 char3"
+      "char4 char4 char4"
+      "footer footer footer";
+}
+  
+.Header { grid-area: Header; }
+  
+.char1 { grid-area: char1; }
+  
+.char2 { grid-area: char2; }
+  
+.char3 { grid-area: char3; }
+  
+.char4 { grid-area: char4; }
+  
+.footer { grid-area: footer; }
+  
+  

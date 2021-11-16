@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random colour</title>
+</head>
+<body>
+
+    <style>
+        body {background-color: white;}
+    </style>
+
+    <h1>Random colour generator</h1>
+
+    <p id="text"></p>
+    
+    <button id="string">Random string</button>
+    <button id="rgb">Random RGB</button>
+    <button id="hex">Random hex</button>
+
+    <script>
+        document.getElementById("string").addEventListener("click", switchStringColour);
+        document.getElementById("rgb").addEventListener("click", switchRGBColour);
+        document.getElementById("hex").addEventListener("click", switchHexColour);
+
+
+        function switchStringColour() {
+            console.log("mmmm")
+            var oldColour = document.body.style.backgroundColor;
+            var newColour = stringColour();
+            while (newColour === oldColour) {
+                newColour = stringColour();
+            }
+            document.body.style.backgroundColor = newColour;
+            console.log(newColour);
+            console.log(oldColour);
+            if (newColour === "black") {
+                document.body.style.color = "white"
+            }
+            else {
+                document.body.style.color = "black"
+            }
+            document.getElementById("text").innerHTML = newColour
+        }
+
+        function stringColour() {
+            console.log("ugh")
+
+            var arrString = ["blue", "red", "white", "black", "pink", "yellow"];
+            return arrString[randInt(1,arrString.length-1)];
+        }
+
+        function switchRGBColour() {
+            console.log("mmmm")
+            var RGBColour = rgbColour();
+            document.body.style.backgroundColor = RGBColour
+            document.getElementById("text").innerHTML = "rgb: " + RGBColour
+        }
+
+        function rgbColour() {
+            console.log("ugh")
+            var R = randInt(0, 255);
+            var G = randInt(0,255);
+            var B = randInt(0,255);
+
+            var rgbString = "rgb(" + R + ", " + G + ", " + B + ")"
+            return rgbString
+        }
+
+        function switchHexColour() {
+            console.log("mmmm");
+            var HexColour = hexColour();
+            document.body.style.backgroundColor = HexColour;
+            document.getElementById("text").innerHTML = "Colour: " + HexColour;
+        }
+
+        function hexColour() {
+            console.log("ugh")
+            var arrHex = [0,1,2,3,4,5,6,7,8,9,"a","b","c","d","e","f"];
+            var finishedHex = "";
+            for(let i = 0; i < 6; i++) {
+                finishedHex += arrHex[randInt(0, arrHex.length-1)];
+            }
+            return "#" + finishedHex;
+        }
+
+        function randInt(min, max) {
+            max = Math.floor(max);
+            min = Math.ceil(min);
+            return Math.floor(Math.random() * (max - min + 1) ) + min;
+        }
+
+    </script>
+
+</body>
+</html>

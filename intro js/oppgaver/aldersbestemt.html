@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aldersbestemt nettside</title>
+</head>
+<body>
+    <style>
+        body {background-color: black; color: white; }
+        main {width: 600px; padding: 20px; margin: auto; background-color: rgb(54, 53, 53);}
+        #gammelNok {background-color: #3e4a5e; color: #E4E4F4; border-radius: 20%; height: 30px; width: 150px;}
+        #gammelNok:hover {background-color: #e4eeff; color: black;}
+    </style>
+
+    <main>
+        <label for="inputAlder">Skriv inn alderen din:</label>
+        <input type="text" id="inputAlder" placeholder="Skriv inn alderen din">
+        <button id="gammelNok">Kontroller alderen</button>
+
+        <h1 id="tekst"></h1>
+        <img id="bilde" src="" alt="">
+    </main>
+    
+    <script>
+
+        document.getElementById("gammelNok").addEventListener("click", sjekkAlder);
+        
+        function sjekkAlder() {
+            let alder = document.getElementById("inputAlder").value;
+            if(alder >= 18) {
+                console.log("gaaaaaah")
+                document.getElementById("tekst").innerHTML = "Du er " + alder + " år gammel og kan se denne siden";
+                document.getElementById("bilde").src = "/bilder/duck2.jfif";
+            }   
+            else {
+                console.log("ahhhhhhh")
+                document.getElementById("tekst").innerHTML = "Du er ikke gammel nok til å se denne siden";
+                document.getElementById("bilde").src = ""
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
