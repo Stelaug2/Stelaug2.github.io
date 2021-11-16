@@ -1,2 +1,3 @@
 # Stelaug2.github.io
-This is a joke. Just like my life. Enjoy :)
+This is for school. Check out my other account Stelaug and Stelaug.github.io.
+Enjoy :)
