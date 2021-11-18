@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    
+    <p>Vil du delta i undersøkelse?</p>
+
+    <label for="inpSvar">Svar</label>
+    <input type="radio" name="inpSvar" id="inpJa">Ja</label>
+    <input type="radio" name="inpSvar" id="inpNei">Nei</label>
+    <p id="utskrift"></p>
+    <button id="sjekkSvar">Send inn</button>
+
+    <hr>
+    <label for="fargeBil">Velg farge på bilen</label>
+    <input type="radio" name="fargeBil" id="svartBil" bilde = "/bilder/svart.jfif">Svart</label>
+    <input type="radio" name="fargeBil" id="brunBil" bilde = "/bilder/brun.jfif">Brun</label>
+    <input type="radio" name="fargeBil" id="hvitBil" bilde = "/bilder/hvit.png">Hvit</label>
+    <img src="/bilder/svart.jfif" height="300px" width="400px" id="bilde">
+
+    <hr>
+    <label for="inpCheckbox">Klikk på boksen</label>
+    <input type="checkbox" name="inpCheckbox" id="A">A</label>
+    <p id="checkboxSvar"></p>
+
+    <script>
+
+        document.getElementById("sjekkSvar").addEventListener("click", sjekkSvar)
+        function sjekkSvar() {
+            if(document.getElementById("inpJa").checked) {
+                document.getElementById("utskrift").innerHTML = "Takk for at du bidrar :)";
+            }
+            else {
+                document.getElementById("utskrift").innerHTML = "Nei vel :/"
+            }
+        }
+
+        var svart = document.getElementById("svartBil");
+        var brun = document.getElementById("brunBil");
+        var hvit = document.getElementById("hvitBil");
+        svart.onclick = brun.onclick = hvit.onclick = skiftFarge;
+        var imgBilFarge = document.getElementById("bilde");
+
+        function skiftFarge(evt) {
+            let farge = evt.target; //radioknapp som blir trykket på
+            let bilde = farge.getAttribute("bilde");
+            imgBilFarge.src = bilde;
+        }
+
+        var boksen = document.getElementById("A");
+        var CBSvar = document.getElementById("checkboxSvar"); //checkbox svar
+        boksen.onchange = function() {
+            //console.log("yas")
+            if(boksen.checked) {
+                CBSvar.innerHTML = "Du har valg A";
+            }
+            else {
+                CBSvar.innerHTML = "Du har ikke valg A";
+            }
+        }
+        
+
+    </script>
+
+</body>
+</html>
