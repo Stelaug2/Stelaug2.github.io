@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ikke forms</title>
+</head>
+<body>
+    
+    <p>Vil du delta i undersøkelse?</p>
+    <!--radio knapper med valg-->
+    <label for="inpSvar">Svar</label>
+    <input type="radio" name="inpSvar" id="inpJa">Ja</label>
+    <input type="radio" name="inpSvar" id="inpNei">Nei</label>
+    <p id="utskrift"></p>
+    <button id="sjekkSvar">Send inn</button>
+
+    <hr>
+    <!--radio knapper med skift på trykk på knapp-->
+    <label for="fargeBil">Velg farge på bilen</label>
+    <input type="radio" name="fargeBil" id="svartBil" bilde = "/bilder/svart.jfif">Svart</label>
+    <input type="radio" name="fargeBil" id="brunBil" bilde = "/bilder/brun.jfif">Brun</label>
+    <input type="radio" name="fargeBil" id="hvitBil" bilde = "/bilder/hvit.png">Hvit</label>
+    <img src="/bilder/svart.jfif" height="300px" width="400px" id="bilde">
+
+    <hr>
+    <!--checkbox innput-->
+    <label for="inpCheckbox">Klikk på boksen</label>
+    <input type="checkbox" name="inpCheckbox" id="A">A</label>
+    <p id="checkboxSvar"></p>
+
+    <hr>
+    <!--dropdown select greie-->
+    <label for="ukedag">Velg ukedag</label>
+    <select name="ukedag" id="ukedag">
+        <option value="">Velg en dag</option>
+        <option value="mandag">Mandag</option>
+        <option value="tirsdag">Tirsdag</option>
+        <option value="onsdag">Onsdag</option>
+        <option value="torsdag">torsdag</option>
+        <option value="fredag">Fredag</option>
+        <option value="lørdag">Lørdag</option>
+        <option value="søndag">Søndag</option>
+    </select>
+    <p id="dagUtskrift">Du har ikke valgt dag</p>
+
+    <script>
+        //radio knapper utskrift ved valg og innsending
+        document.getElementById("sjekkSvar").addEventListener("click", sjekkSvar)
+        function sjekkSvar() {
+            if(document.getElementById("inpJa").checked) {
+                document.getElementById("utskrift").innerHTML = "Takk for at du bidrar :)";
+            }
+            else {
+                document.getElementById("utskrift").innerHTML = "Nei vel :/"
+            }
+        }
+        //bil radio knapper
+        var svart = document.getElementById("svartBil");
+        var brun = document.getElementById("brunBil");
+        var hvit = document.getElementById("hvitBil");
+        svart.onclick = brun.onclick = hvit.onclick = skiftFarge;
+        var imgBilFarge = document.getElementById("bilde");
+        //skift farge ved klikk på knapp
+        function skiftFarge(evt) {
+            let farge = evt.target; //radioknapp som blir trykket på
+            let bilde = farge.getAttribute("bilde");
+            imgBilFarge.src = bilde;
+        }
+        //checkbox endring av utskrift ved endring av svar
+        var boksen = document.getElementById("A");
+        var CBSvar = document.getElementById("checkboxSvar"); //checkbox svar CB = checkbox
+        boksen.onchange = function() {
+            //console.log("yas")
+            if(boksen.checked) {
+                CBSvar.innerHTML = "Du har valg A";
+            }
+            else {
+                CBSvar.innerHTML = "Du har ikke valg A";
+            }
+        }
+
+        var valgtDag = document.getElementById("ukedag");
+
+        valgtDag.onchange = function() {
+            console.log(valgtDag.value);
+            document.getElementById("dagUtskrift").innerHTML = "Du har valgt " + valgtDag.value + ".";
+        }
+        
+
+    </script>
+
+</body>
+</html>
