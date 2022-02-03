@@ -22,14 +22,12 @@
     <hr>
     <form id="huskeliste">
         <label for="huskeliste">Skriv inn ting du må huske</label>
-        <input type="text" name="huskeliste" id="huskeliste">
+        <input type="text" name="huskeliste" id="huskeInput">
         <button type="submit">Send inn</button>
     </form>
 
     <h1>HUSK!</h1>
-    <ul>
-        <li>Her kommer det du skal huske</li>
-    </ul>
+    <ul id="utskriftHuskeListe"></ul>
 
     <script>
         //Forfatter og boktittel
@@ -46,9 +44,15 @@
         }
 
         //huskeliste
-        var huskeListe = document.getElementById("huskeliste");
+        var utskriftHuskeListe = document.getElementById("utskriftHuskeListe");
+        var huskeListe = document.getElementById("huskeliste")
 
-        var
+        huskeListe.onsubmit = function(evt) {
+            evt.preventDefault();
+            let huskeInput = document.getElementById("huskeInput").value;
+            console.log(huskeInput)
+            utskriftHuskeListe.innerHTML += "<li> " + huskeInput + "</li>";
+        }
 
     </script>
 
