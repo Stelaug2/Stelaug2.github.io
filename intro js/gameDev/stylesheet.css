@@ -1,5 +1,19 @@
 body {
-    background-color: black;
+    background-color: #121111;
+    color: white;
+}
+
+.warriors {
+    background-color: #311d0e;
+    margin: 1%;
+}
+.warriorname {
+    text-align: center;
+}
+
+.stats {
+    flex-wrap: wrap;
+    flex: 2;
 }
 
 .container {
@@ -9,24 +23,85 @@ body {
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "Header Header Header"
-      "char1 char1 char1"
-      "char2 char2 char2"
-      "char3 char3 char3"
-      "char4 char4 char4"
-      "footer footer footer";
+      "header header header header"
+      "paladin paladin mage mage"
+      "berserker berserker archer archer"
+      "footer footer footer footer";
 }
   
-.Header { grid-area: Header; }
+.paladin {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "palpic paltext paltext paltext"
+      "palpic paltext paltext paltext"
+      "palpic paltext paltext paltext";
+    grid-area: paladin;
+}
   
-.char1 { grid-area: char1; }
+.palpic { grid-area: palpic; }
+
+.paltext { grid-area: paltext; }
+
+.mage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "magepic magetext magetext magetext"
+      "magepic magetext magetext magetext"
+      "magepic magetext magetext magetext";
+    grid-area: mage;
+}
   
-.char2 { grid-area: char2; }
+.magepic { grid-area: magepic; }
+
+.magetext { grid-area: magetext; }
+
+.berserker {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "berspic berstext berstext berstext"
+      "berspic berstext berstext berstext"
+      "berspic berstext berstext berstext";
+    grid-area: berserker;
+}
   
-.char3 { grid-area: char3; }
+.berspic { grid-area: berspic; }
+
+.berstext { grid-area: berstext; }
+
+.archer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "archpic archtext archtext archtext"
+      "archpic archtext archtext archtext"
+      "archpic archtext archtext archtext";
+    grid-area: archer;
+}
   
-.char4 { grid-area: char4; }
-  
+.archpic { grid-area: archpic; }
+
+.archtext { grid-area: archtext; }
+
+.header { grid-area: header; }
+
 .footer { grid-area: footer; }
-  
+.fighterpic {
+    height: fit-content;
+    width: fit-content;
+}
   

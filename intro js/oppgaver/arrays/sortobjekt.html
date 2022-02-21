@@ -7,12 +7,38 @@
     <title>Document</title>
 </head>
 <body>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th {
+            background-color: greenyellow;
+            border: 1px solid magenta;
+            padding: 5px;
+            text-align: left;
+        }
+        td {
+            background-color:blanchedalmond;
+            border: 1px solid peru;
+            padding: 5px;
+        }
+    </style>
     <div id="utskrift">
 
     </div>
 
+    <div id="utskriftTabell">
+
+    </div>
+
+    <div id="elevOverFem">
+
+    </div>
+
     <script>
-        var utskrift = document.getElementById("utskrift");
+        let utskrift = document.getElementById("utskrift");
+        let utskriftTabell = document.getElementById("utskriftTabell");
+        let elevOverFem = document.getElementById("elevOverFem");
 
         var elevene = [
             {navn: "Amanda" , karakter: 4},
@@ -51,6 +77,30 @@
         for(let elev of sortertKarakter) {
             utskrift.innerHTML += elev.navn + " fikk " + elev.karakter + "<br>";
         }
+
+        //html tabell utskrift
+
+        function htmlTabell(arrayInn) {
+            let tabell = "<table><tr><th> Elev </th><th> Karakter</th></td>";
+
+                for(let elev of arrayInn) {
+                    tabell += "<tr><td>" + elev.navn + "</td><td>" + elev.karakter + "</td></tr>";
+                }
+                tabell += "</table>";
+                utskriftTabell.innerHTML += "<br><br>" + tabell;
+        }
+        htmlTabell(elevene);
+
+        let antallOverFem = 0;
+        let eleverMedOverFem = [];
+
+        for(let elev of elevene) {
+            if(elev.karakter >= 5) {
+                antallOverFem++;
+                eleverMedOverFem.push(elev.navn);
+            }
+        }
+        elevOverFem.innerHTML += "<br> Elever som fikk mer enn fem er " + eleverMedOverFem + "."
 
     </script>
 </body>

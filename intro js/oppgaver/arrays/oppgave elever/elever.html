@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="elever.css">
+    <title>Elever</title>
+</head>
+<body>
+    <div id="midtstilt">
+        <div>
+            <input type="text" placeholder="Hvem skal slettes?" id="elevSomSkalSlettes">
+            <button id="slettElev">Slett elev</button>
+        </div>
+        <br>
+        <div>
+            <input type="text" placeholder="Hvem skal legges til?">
+            <button id="btnLeggTilBruker">Legg til elev</button>
+        </div>
+        <br>
+        <div id="utskrift">
+            <!-- Utskrift generert i JS -->
+        </div>
+        <div id="ingenElevFunnet">
+            <!--Feilmelding om det ikke er funnet et navn-->
+        </div>
+        <br><br>
+        <div>
+            <select id="velgSortering">
+                <option value="">Velg sortering</option>
+                <option value="navn">Navn</option>
+                <option value="karakter">Karakter</option>
+            </select>
+            <button id="sortertListe">Sorter liste</button>
+        </div>
+    </div>
+
+    <script src="elever.js"></script>
+</body>
+</html>
