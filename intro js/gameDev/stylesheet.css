@@ -4,27 +4,29 @@ body {
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     grid-template-areas:
-      "header header header header"
-      "warrior warrior mage mage"
-      "berserker berserker archer archer"
-      "footer footer footer footer";
+      "Header Header Header"
+      "char1 char1 char1"
+      "char2 char2 char2"
+      "char3 char3 char3"
+      "char4 char4 char4"
+      "footer footer footer";
 }
   
-.warrior { grid-area: warrior; }
-
-.mage { grid-area: mage; }
-
-.berserker { grid-area: berserker; }
-
-.archer { grid-area: archer; }
-
-.header { grid-area: header; }
-
+.Header { grid-area: Header; }
+  
+.char1 { grid-area: char1; }
+  
+.char2 { grid-area: char2; }
+  
+.char3 { grid-area: char3; }
+  
+.char4 { grid-area: char4; }
+  
 .footer { grid-area: footer; }
-
+  
   

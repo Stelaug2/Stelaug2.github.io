@@ -19,13 +19,15 @@
     <h1>Bilder</h1>
     <p><hr></p>
 
-    <img id="bilde" src="" alt="">
+    <img id="bilde" src="/bilder/sad.png" alt="">
     <button id="neste">Neste</button>
     <button id="forrige">Forrige</button>
 
     <script>
 
-        let arrBilder = ["pictures-of-duck.jpg", "duck2.jfif", "duck3.jfif", "duck4.jfif", "duck5.jfif", "goose.jfif"];
+        let arrBilder = ["pictures-of-duck.jpg", "sad.png", "egg1.jpg", "terning5.png"];
+        arrBilder.sort()
+        console.log(arrBilder);
 
         let bildeNr = 0;
         document.getElementById("bilde").src = "/bilder/" + arrBilder[bildeNr];

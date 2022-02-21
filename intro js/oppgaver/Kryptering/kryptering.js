@@ -77,7 +77,7 @@ var alfabet = "abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ.
 
             let nyPosisjon = (bokstavPosisjon - kryptNøkkel);
 
-            if(nyPosisjon <= 0) {
+            if(nyPosisjon < 0) {
                 nyPosisjon = alfabetLengde + nyPosisjon;
                 console.log("Under alfabetets lengde");
             }

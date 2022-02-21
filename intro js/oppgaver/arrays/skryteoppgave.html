@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skryt</title>
+</head>
+<body>
+    
+    <label for="navn" class="skryt">Skriv inn navnet på den du vil skryte av</label>
+    <br>
+    <input type="text" id="navn" placeholder="Navn" class="skryt">
+
+    <br>
+    <label for="antallOrd" class="skryt">Hvor mange ord vil du ha?</label>
+    <br>
+    <input type="number" id="antallOrd" class="skryt">
+    <button id="genererSkryt">Send inn</button>
+
+    <p id="utskrift"></p>
+
+    <script>
+
+        document.getElementById("genererSkryt").onclick = function() {
+            let navn = document.getElementById("navn").value;
+            let antallOrd = document.getElementById("antallOrd").value;
+            let utskrift = document.getElementById("utskrift").innerHTML;
+
+            let skryteOrd = ["sjenerøs", "omgjengelig", "ambisiøs", "munter", "hardtarbeidende", "troverdig", "tålmodig", "optimistisk", 
+            "følsom", "sosial", "besluttsom", "morsom", "blid", "vakker", "lekende", "elskverdig", "talentfull", "begavet"];
+
+            utskrift = "Hei, " + navn + ". Du er ";
+
+            for(let i = 0; i < 5; i++){
+                console.log("ugh")
+                let tall = tilfeldigTall(0, skryteOrd.length-1);
+                console.log(tall)
+                skryteOrd.splice(tall, 1);
+                utskrift += skryteOrd[tall];
+            }
+        }
+
+        function tilfeldigTall() {
+            min = Math.ceil(min);
+            max = Math.floor(max)
+            return Math.floor(Math.random()*(max - min + 1) + min);
+        }
+
+    </script>
+
+</body>
+</html>

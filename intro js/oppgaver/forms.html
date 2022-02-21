@@ -8,51 +8,62 @@
 </head>
 <body>
     
-    <form id="forfatterOgTittel">
-        <input type="text" id="forfatter" placeholder="Forfatter" required>
-        <input type="text" id="boktittel" placeholder="Boktittel" required>
-        <button type="submit">Send inn</button>
-    </form>
+    <p>Vil du delta i undersøkelse?</p>
 
-    <div>
-        <h3>Forfatter og boktittel</h3>
-        <p id="utskriftFOB"></p> <!--FOB = Forfatter Og Boktittel-->
-    </div>
+    <label for="inpSvar">Svar</label>
+    <input type="radio" name="inpSvar" id="inpJa">Ja</label>
+    <input type="radio" name="inpSvar" id="inpNei">Nei</label>
+    <p id="utskrift"></p>
+    <button id="sjekkSvar">Send inn</button>
 
     <hr>
-    <form id="huskeliste">
-        <label for="huskeliste">Skriv inn ting du må huske</label>
-        <input type="text" name="huskeliste" id="huskeInput">
-        <button type="submit">Send inn</button>
-    </form>
+    <label for="fargeBil">Velg farge på bilen</label>
+    <input type="radio" name="fargeBil" id="svartBil" bilde = "/bilder/svart.jfif">Svart</label>
+    <input type="radio" name="fargeBil" id="brunBil" bilde = "/bilder/brun.jfif">Brun</label>
+    <input type="radio" name="fargeBil" id="hvitBil" bilde = "/bilder/hvit.png">Hvit</label>
+    <img src="/bilder/svart.jfif" height="300px" width="400px" id="bilde">
 
-    <h1>HUSK!</h1>
-    <ul id="utskriftHuskeListe"></ul>
+    <hr>
+    <label for="inpCheckbox">Klikk på boksen</label>
+    <input type="checkbox" name="inpCheckbox" id="A">A</label>
+    <p id="checkboxSvar"></p>
 
     <script>
-        //Forfatter og boktittel
-        var FOB = document.getElementById("forfatterOgTittel");
 
-        var utskriftFOB = document.getElementById("utskriftFOB");
-
-        FOB.onsubmit = function(evt) {
-            evt.preventDefault();
-            let forfatter = document.getElementById("forfatter").value;
-            let boktittel = document.getElementById("boktittel").value;
-            utskriftFOB.innerHTML += "Forfatter er " + forfatter + ". <br>";
-            utskriftFOB.innerHTML+= "Tittel er " + boktittel + ". <br>";
+        document.getElementById("sjekkSvar").addEventListener("click", sjekkSvar)
+        function sjekkSvar() {
+            if(document.getElementById("inpJa").checked) {
+                document.getElementById("utskrift").innerHTML = "Takk for at du bidrar :)";
+            }
+            else {
+                document.getElementById("utskrift").innerHTML = "Nei vel :/"
+            }
         }
 
-        //huskeliste
-        var utskriftHuskeListe = document.getElementById("utskriftHuskeListe");
-        var huskeListe = document.getElementById("huskeliste")
+        var svart = document.getElementById("svartBil");
+        var brun = document.getElementById("brunBil");
+        var hvit = document.getElementById("hvitBil");
+        svart.onclick = brun.onclick = hvit.onclick = skiftFarge;
+        var imgBilFarge = document.getElementById("bilde");
 
-        huskeListe.onsubmit = function(evt) {
-            evt.preventDefault();
-            let huskeInput = document.getElementById("huskeInput").value;
-            console.log(huskeInput)
-            utskriftHuskeListe.innerHTML += "<li> " + huskeInput + "</li>";
+        function skiftFarge(evt) {
+            let farge = evt.target; //radioknapp som blir trykket på
+            let bilde = farge.getAttribute("bilde");
+            imgBilFarge.src = bilde;
         }
+
+        var boksen = document.getElementById("A");
+        var CBSvar = document.getElementById("checkboxSvar"); //checkbox svar
+        boksen.onchange = function() {
+            //console.log("yas")
+            if(boksen.checked) {
+                CBSvar.innerHTML = "Du har valg A";
+            }
+            else {
+                CBSvar.innerHTML = "Du har ikke valg A";
+            }
+        }
+        
 
     </script>
 

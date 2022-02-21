@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="utskrift">
+
+    </div>
+
+    <script>
+        var utskrift = document.getElementById("utskrift");
+
+        var elevene = [
+            {navn: "Amanda" , karakter: 4},
+            {navn: "Ole" , karakter: 3},
+            {navn: "Reidun" , karakter: 6},
+            {navn: "Jan" , karakter: 5},
+            {navn: "Jo Bjarne" , karakter: 2}
+        ]
+
+        elevene[4].navn = "Jo Bjørnar";
+
+        let nyElev = {
+            navn: "Jojo", karakter: 2
+        };
+
+        elevene.push(nyElev);
+
+        for(let elev of elevene) {
+            utskrift.innerHTML += elev.navn + " fikk " + elev.karakter + "<br>";
+        }
+
+        /*for(let i = 0; i < elevene.length; i++) {
+            utskrift.innerHTML += elevene[i].navn + " fikk " + elevene[i].karakter + "<br>";
+        }*/
+
+        //console.log(elevene[0].navn);
+        //console.log(elevene[0].karakter);
+
+        //slice lager en kopi av array-en
+        let sortertKarakter = elevene.slice().sort(function(a,b) {
+            return a.karakter - b.karakter;
+        });
+
+        utskrift.innerHTML += "<br>";
+
+        for(let elev of sortertKarakter) {
+            utskrift.innerHTML += elev.navn + " fikk " + elev.karakter + "<br>";
+        }
+
+    </script>
+</body>
+</html>

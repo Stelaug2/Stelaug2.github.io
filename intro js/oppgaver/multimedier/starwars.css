@@ -1,0 +1,19 @@
+body {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.boop {
+    background-color: #FCF188;
+}
+
+.chewie {
+    background-color: #3077A9;
+}
+
+.tieFighter {
+    background-color: #FCF188;
+}
