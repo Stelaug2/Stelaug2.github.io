@@ -43,6 +43,25 @@ slettElev.onclick = function() {
 }
 
 //Legge til elev
+let leggTilElev = document.getElementById("leggTilElev");
+leggTilElev.addEventListener("click", leggTilNyElev);
+
+function leggTilNyElev() {
+    console.log("funker");
+    let elevSomSkalLeggesTil = document.getElementById("elevSomSkalLeggesTil").value;
+    let nyKarakter = randInt(1,6);
+    let nyElev = {
+        navn: elevSomSkalLeggesTil,
+        karakter: nyKarakter
+    };
+    elevene.push(nyElev);
+}
+
+function randInt(min, max) {
+    max = Math.floor(max);
+    min = Math.ceil(min);
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
 
 //sortere tabellen
 let sorteringValgt = document.getElementById("velgSortering");
@@ -54,7 +73,13 @@ sortertListe.onclick = function() {
         let sortertNavn = elevene.slice().sort(function(a,b) {
             const navnA = a.navn.toUpperCase();
             const navnB = b.navn.toUpperCase();
-            
+            let comparison = 0;
+            if (navnA > navnB) {
+                comparison = 1;
+            } else if (navnA < navnB) {
+                comparison = -1;
+            }
+            return comparison;
         });
         console.log(sortertNavn);
         utskriftTabell.innerHTML = "";
