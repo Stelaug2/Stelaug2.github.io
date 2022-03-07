@@ -55,6 +55,8 @@ function leggTilNyElev() {
         karakter: nyKarakter
     };
     elevene.push(nyElev);
+    utskriftTabell.innerHTML = "";
+    htmlTabellElever(elevene);
 }
 
 function randInt(min, max) {
