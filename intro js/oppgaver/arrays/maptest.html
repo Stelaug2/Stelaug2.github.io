@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map test</title>
+</head>
+<body>
+    
+    <script>
+        let elev1 = {tlf: 1, navn: "A"};
+        let elev2 = {tlf: 2, navn: "B"};
+        let elev3 = {tlf: 3, navn: "C"};
+
+        let elever = new Map(); //lager map
+        elever.set(elev1.tlf, elev1); //legger til map-et elever
+        elever.set(elev2.tlf, elev2);
+        elever.set(elev3.tlf, elev3);
+        console.log(elever);
+
+        let elev4 = {tlf: 4, navn: "D"};
+        elever.set(elev4.tlf, elev4);
+
+        elever.delete(elev3.tlf); //fjerner verdien med nøkkelen elev3.tlf
+        console.log(elever.entries())
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set test</title>
+</head>
+<body>
+    <p>Se console for land</p>
+    <br>
+
+    <label for="farger">Skriv inn ett fargenavn for å lagre det i ett Set</label>
+    <input type="text" name="farger" id="fargenavn">
+    <button onclick="nyFarge()">Legg til ny farge!</button>
+    <br>
+    <div id="farger"></div>
+
+    <script>
+        //lage set og slikt
+        let utskrift = document.getElementById("utskrift");
+        let land = new Set(["Norge", "Sverige", "Danmark", "Finland"]);
+
+        console.log(land.has("Estland"))
+        land.add("Island");
+        console.log(land);
+        land.delete("Sverige");
+        console.log(land);
+
+        let arrLand = Array.from(land);
+        console.log(arrLand.sort());
+
+        //farger og slikt
+        let fargenavn = new Set()
+        //let farger = document.getElementById("farger");
+        function nyFarge() {
+            let nyttFargeNavn = document.getElementById("fargenavn").value
+            fargenavn.add(nyttFargeNavn);
+            console.log(fargenavn);
+
+            let utskriftFarger = document.getElementById(farger);
+            arrToUl(utskriftFarger, arrLand);
+        }
+
+        //array til uordnet liste
+        function arrToUl(root, arr) {
+        var ul = document.createElement("ul");
+        var li;
+        
+        root.appendChild(ul); // legger ul til som child på root
+
+        arr.forEach(function(item) {
+            if (Array.isArray(item)) { // om det er en array
+            arrToUl(li, item); // legger li som root og kaller på arrToUL
+            return;
+            }
+            
+            li = document.createElement('li'); // lager ett nytt li element
+            li.appendChild(document.createTextNode(item)); // legger teksten til li elementet
+            ul.appendChild(li); // legger li elementet som child på ul
+        });
+        }
+
+    </script>
+</body>
+</html>
