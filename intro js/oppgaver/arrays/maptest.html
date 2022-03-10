@@ -7,23 +7,30 @@
     <title>Map test</title>
 </head>
 <body>
+    <p id="utskrift"></p>
     
     <script>
-        let elev1 = {tlf: 1, navn: "A"};
+        /*let elev1 = {tlf: 1, navn: "A"};
         let elev2 = {tlf: 2, navn: "B"};
-        let elev3 = {tlf: 3, navn: "C"};
+        let elev3 = {tlf: 3, navn: "C"};*/
 
         let elever = new Map(); //lager map
-        elever.set(elev1.tlf, elev1); //legger til map-et elever
-        elever.set(elev2.tlf, elev2);
-        elever.set(elev3.tlf, elev3);
+        elever.set(1, "A"); //legger til map-et elever
+        elever.set(2, "B");
+        elever.set(3, "C");
         console.log(elever);
 
-        let elev4 = {tlf: 4, navn: "D"};
-        elever.set(elev4.tlf, elev4);
+        //let elev4 = {tlf: 4, navn: "D"};
+        elever.set(4, "D");
 
-        elever.delete(elev3.tlf); //fjerner verdien med nøkkelen elev3.tlf
-        console.log(elever.entries())
+        elever.delete(3); //fjerner verdien med nøkkelen 3
+        console.log(elever.entries());
+        let utskrift = document.getElementById("utskrift");
+
+        for(let [verdi, nøkkel] of elever) {
+            console.log(verdi + nøkkel);
+            utskrift.innerHTML += verdi + " er tilstede. <br>";
+        }
 
     </script>
 
