@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Skredfare 2</title>
+    <style>
+        .lav {background-color: green;}
+        .moderat {background-color: yellow;}
+        .betydelig {background-color: orange;}
+        .stor {background-color: red;}
+        .meget {background-color: black;}
+    </style>
 </head>
 <body>
     <p id="utskriftTabell"></p> 
@@ -30,12 +37,6 @@
             {område: "Nord-Norge", stadnamn: "Lofoten", skredfare: 3}
         ]
 
-        //farger skredfaren etter fargekoder
-        for(let i = 0; i < skredObservasjonar; i++) {
-            skredObservasjonar.skredfare.setAttribute("id", stadnamn);
-            
-        }
-
         //Viser kun den valgte regionen
         let regionValgt = document.getElementById("velgRegion");
 
@@ -56,10 +57,8 @@
                 htmlTabellSkred(regionArr);
             }
         }
-
-        //farger bakgrunnen av skredfaren
         
-
+        
         //sortere tabellen
         let sorteringValgt = document.getElementById("velgSortering");
 
@@ -112,12 +111,33 @@
             let tabell = "<table><tr><th> Område </th><th> Stedsnavn </th><th> Skredfare </th></td>";
 
             for(let skred of arrayInn) {
-                tabell += "<tr><td>" + skred.område + "</td><td>" + skred.stadnamn + "</td><td>" + skred.skredfare + "</td></tr>";
+                tabell += "<tr><td>" + skred.område + "</td><td>" + skred.stadnamn + "</td><td id=\"" + skred.stadnamn + "\">" + skred.skredfare + "</td></tr>";
             }
             tabell += "</table>";
             utskriftTabell.innerHTML += "<br><br>" + tabell;
         }
         htmlTabellSkred(skredObservasjonar);
+
+        //farger skredfaren etter fargekoder
+        for(let skred of skredObservasjonar) {
+            let id = skred.stadnamn;
+            if(skred.skredfare === 1) {
+                document.getElementById(id).style.backgroundColor = "green";
+            }
+            else if(skred.skredfare === 2) {
+                document.getElementById(id).style.backgroundColor = "yellow";
+            }
+            else if(skred.skredfare === 3) {
+                document.getElementById(id).style.backgroundColor = "orange";
+            }
+            else if(skred.skredfare === 4) {
+                document.getElementById(id).style.backgroundColor = "red";
+            }
+            else if(skred.skredfare >= 5) {
+                document.getElementById(id).style.backgroundColor = "black";
+                document.getElementById(id).style.color = "white";
+            }
+        }
 
     </script>
 </body>
