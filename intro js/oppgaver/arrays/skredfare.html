@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skredfare</title>
+    
+</head>
+<body>
+    <label for="skredfare">Venligst legg inn skredfare nivået</label>
+    <br>
+    <input type="number" id="skredFareNivå" name="skredfare">
+    <button id="angiSkredFare">Angi skredfare</button>
+
+    <p id="utskriftFare">Skredfare</p>
+    <!--Rektangelen med farge-->
+    <svg width="50px" heigth="50px">
+        <rect id="rekt" width="20px" height="20px" fill="grey">
+    </svg>
+    <script>
+        let utskriftFare = document.getElementById("utskriftFare");
+        let rektangel = document.getElementById("rekt");
+        document.getElementById("angiSkredFare").onclick = function() {
+            let skredfareNivå = Number(document.getElementById("skredFareNivå").value);
+            if(skredfareNivå === 1) {
+                utskriftFare.innerHTML = "Liten skredfare";
+                rektangel.style.fill = "green";
+            }
+            else if(skredfareNivå === 2) {
+                utskriftFare.innerHTML = "Moderat skredfare";
+                rektangel.style.fill = "yellow";
+            }
+            else if(skredfareNivå === 3) {
+                utskriftFare.innerHTML = "Betydelig skredfare";
+                rektangel.style.fill = "orange";
+            }
+            else if(skredfareNivå === 4) {
+                utskriftFare.innerHTML = "Stor skredfare";
+                rektangel.style.fill = "red";
+            }
+            else if(skredfareNivå >= 5) {
+                utskriftFare.innerHTML = "Meget stor skredfare";
+                rektangel.style.fill = "black";
+            }
+            else if(skredfareNivå === NaN || skredfareNivå < 1) {
+                utskriftFare.innerHTML = "Det du satte inn ble ikke akseptert. Vennligst skriv inn ett tall mellom 1 - 3";
+            }
+        }
+    </script>
+</body>
+</html>
