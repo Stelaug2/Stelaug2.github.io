@@ -40,9 +40,25 @@
         let regionValgt = document.getElementById("velgRegion");
 
         regionValgt.onchange = function() {
-            console.log(regionValgt.value);
-            
+            let regionArr = skredObservasjonar.filter(function(el)
+                {
+                    if(el.område === regionValgt.value) {
+                        return el.område && el.stadnamn && el.skredfare;
+                    }
+                }
+            );
+            if(regionValgt.value === "") {
+                utskriftTabell.innerHTML = "";
+            htmlTabellSkred(skredObservasjonar);
+            }
+            else {
+                utskriftTabell.innerHTML = "";
+                htmlTabellSkred(regionArr);
+            }
         }
+
+        //farger bakgrunnen av skredfaren
+        
 
         //sortere tabellen
         let sorteringValgt = document.getElementById("velgSortering");
