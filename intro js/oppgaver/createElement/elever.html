@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="elever.css">
+    <title>Create element</title>
+</head>
+<body>
+    <div id="midtstilt">
+        <div id="bokserUt"></div>
+    </div>
+
+    <script>
+
+    var elevene = [
+        {navn : "Amanda" , karakter : 4}, 
+        {navn : "Ole" , karakter : 3}, 
+        {navn : "Reidun" , karakter : 6}, 
+        {navn : "Jan" , karakter : 5},
+        {navn : "Jo Bjarne", karakter : 2},
+        {navn : "Svada Bada" , karakter : 5},
+        {navn : "Rada Bada" , karakter : 5},
+        {navn : "Hada Pa Bada" , karakter : 5},
+        {navn : "Rompa Stompa" , karakter : 1},
+        {navn : "Hopp Hipp" , karakter : 2}
+    ];
+
+    let bokserUt= document.getElementById("bokserUt");
+
+    let i = 0
+    for(let elev of elevene) {
+        let nyDiv = document.createElement("div");
+        nyDiv.className = "elev";
+
+        let overskrift = document.createElement("h2");
+        overskrift.innerHTML = elev.navn;
+
+        let bilde = document.createElement("img");
+        bilde.src = "bileter/" + i + ".jpg";
+        bilde.className = "tilpassBilde";
+        i++;
+
+        let karakter = document.createElement("p");
+        karakter.innerHTML = "Karakter: " + elev.karakter;
+
+        nyDiv.appendChild(overskrift);
+        nyDiv.appendChild(bilde);
+        nyDiv.appendChild(karakter);
+
+        bokserUt.appendChild(nyDiv);
+    }
+
+    </script>
+    
+</body>
+</html>
