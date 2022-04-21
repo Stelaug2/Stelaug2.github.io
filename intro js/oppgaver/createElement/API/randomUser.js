@@ -1,5 +1,5 @@
 
-let users = []
+let brukere = []
 const getUsers = async () => {
     const response = await fetch('https://randomuser.me/api/?results=5');
     const json = await response.json();
@@ -16,34 +16,34 @@ function addUser(users) {
         let newUser = {
             firstName: user.name.first,
             lastName: user.name.last,
-            city: user.city,
-            country: user.country,
+            city: user.location.city,
+            country: user.location.country,
             email: user.email,
             image: user.picture.large
         };
         console.log(newUser);
-        users.push(newUser);
+        brukere.push(newUser);
     }
     makeHTML(users);
 }
 
 function makeHTML(users) {
     let root = document.getElementById("root");
-    for(let user of users) {
+    for(let bruker of brukere) {
         let div = document.createElement("div");
         div.className = "bruker";
 
         let img = document.createElement("img");
-        img.src = image;
+        img.src = bruker.image;
 
         let h2 = document.createElement("h2");
-        h2.textContent = user.firstName + user.lastName;
+        h2.textContent = bruker.firstName + " " + bruker.lastName;
 
         let p = document.createElement("p");
-        p.textContent = user.city + ", " + user.country
+        p.textContent = bruker.city + ", " + bruker.country
 
         let p2 = document.createElement("p");
-        p2.textContent = user.email;
+        p2.textContent = bruker.email;
 
         root.appendChild(div);
         div.appendChild(img);

@@ -6,16 +6,16 @@ html, body {
     height: 100%;
 }
 
-#brukarar {
+#root {
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    width: 100%;
 }
 
 .bruker {
-    width: 100%;
     max-width: 300px;
     margin: 0.5rem;
     padding: 2em;
