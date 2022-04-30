@@ -29,7 +29,19 @@ function attackEnemy() {
 
 function summonEnemy() {
     let enemyImage = document.getElementById("enemyImage");
-    if(enemyImage.src = "bilder/karoliner_big.png") {
+    console.log(enemyImage.src);
+    if(enemyImage.src === "http://127.0.0.1:5501/intro%20js/jrpg/jrpg1.html#") {
+        let randEnemy = randInt(1, 2);
+        if(randEnemy === 1) {
+            console.log("with all");
+            enemyImage.src = "bilder/karoliner_big.png";
+        }
+        else {
+            console.log("of the");
+            enemyImage.src = "bilder/redcoat_big.png";
+        }
+    }
+    else if(enemyImage.src === "http://127.0.0.1:5501/intro%20js/jrpg/bilder/karoliner_big.png") {
         enemyImage.src = "bilder/redcoat_big.png";
         console.log("unga");
         return;
@@ -38,6 +50,8 @@ function summonEnemy() {
         enemyImage.src = "bilder/karoliner_big.png";
         console.log("bunga");
     }
+    console.log(enemyImage);
+    console.log(enemyImage.src);
 }
 
 function randInt(min, max) {
