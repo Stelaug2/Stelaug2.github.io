@@ -38,7 +38,6 @@ function attackEnemy() {
 
 function attackAnders() {
     enableButtons();
-    console.log("enemy attacks!")
     let attackPower = randInt(1, 3);
     let newAndersHP = andersHP - attackPower;
     andersHP = newAndersHP;
