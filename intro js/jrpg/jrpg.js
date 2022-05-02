@@ -32,7 +32,7 @@ function attackEnemy() {
         enemyDisplay.innerHTML = "HP: 0";
         description.textContent = "You defeated your enemy.";
         setTimeout(function() {description.textContent = "Oh no! Here comes a new one"; enemyHP = 20;
-        enemyDisplay.innerHTML = "HP: " + enemyHP; summonEnemy()}, 3000);
+        enemyDisplay.innerHTML = "HP: " + enemyHP; summonEnemy(); enableButtons()}, 3000);
     }
 }
 
@@ -52,6 +52,7 @@ function summonEnemy() {
     if(enemyImage.src === "http://127.0.0.1:5501/intro%20js/jrpg/bilder/karoliner_big.png") {
         enemyImage.src = "bilder/redcoat_big.png";
         console.log("red");
+        return;
     } 
     else {
         enemyImage.src = "bilder/karoliner_big.png";
