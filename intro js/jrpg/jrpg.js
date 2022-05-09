@@ -1,6 +1,6 @@
 let andersDisplay = document.getElementById("anders_display");
 let enemyDisplay = document.getElementById("enemy_display");
-let description = document.getElementById("battleDescription");
+let description = document.getElementById("description");
 let andersImage = document.getElementById("andersImage");
 
 let attackButton = document.getElementById("attack");
@@ -10,54 +10,150 @@ let healButton = document.getElementById("heal");
 let enemyHP = 20;
 let andersHP = 20;
 
+let action = 0;
+let counter = false;
+let attackPower = 0;
+let newAndersHP = 0;
+let newEnemyHP = 0;
+let healAmount = 0;
+let healEnemy = 0;
+
 enemyDisplay.innerHTML = "HP: " + enemyHP;
 andersDisplay.innerHTML = "HP: " + andersHP;
 
 summonEnemy();
 
 attackButton.addEventListener("click", attackEnemy);
+counterButton.addEventListener("click", counterEnemy);
+healButton.addEventListener("click", healAnders);
 
 function attackEnemy() {
+    counter = false;
     disableButtons();
-    let attackPower = randInt(3, 5);
-    let newEnemyHP = enemyHP - attackPower;
-    enemyHP = newEnemyHP;
-    enemyDisplay.innerHTML = "HP: " + enemyHP;
-    description.textContent = "You did " + attackPower + " damage";
-    if(enemyHP > 0) {
-        setTimeout(function() { attackAnders()}, 2000);
-    }
+    attackPower = determineAttackPower("anders");
+    newEnemyHP = enemyHP - attackPower;
+    attackEnemyText();
+    setTimeout(function() {enemyDeath()}, 1000)
+    setTimeout(function() { enemyTurn()}, 1000);
+}
 
-    else if(enemyHP <= 0) {
-        enemyDisplay.innerHTML = "HP: 0";
-        description.textContent = "You defeated your enemy.";
-        setTimeout(function() {description.textContent = "Oh no! Here comes a new one"; enemyHP = 20;
-        enemyDisplay.innerHTML = "HP: " + enemyHP; summonEnemy(); enableButtons()}, 3000);
+function counterEnemy() {
+    counter = true;
+    enemyTurn();
+    disableButtons()
+    setTimeout(function(){
+        if(action === 1) {
+        attackPower = Math.floor(determineAttackPower("anders") * 1.5);
+        newEnemyHP = enemyHP - attackPower;
+        description.textContent = "You countered your enemy's attack!";
+        attackEnemyText();
+        setTimeout(function() {enemyDeath()}, 1000)
+        }
+        else{
+            description.textContent = "Your counter failed"
+        }
+        enableButtons();
+    }, 2000);
+}
+
+function healAnders() {
+    counter = false;
+    disableButtons()
+    let healChance = randInt(0, 100);
+    if(healChance >= 20) {
+        healAmount = randInt(2, 3); 
+        newAndersHP = andersHP + healAmount;
+        andersHP = newAndersHP;
+        description.textContent = "Heal failed. You only healed " + healAmount + " hp";
+        healText("anders")
+        setTimeout(function() {enemyTurn(); enableButtons()}, 2000);
+    }
+    else {
+        healAmount = randInt(6, 10);
+        newAndersHP = andersHP + healAmount;
+        andersHP = newAndersHP;
+        description.textContent = "Heal successfull. You healed " + healAmount + " hp";
+        healText("anders")
+        setTimeout(function() {enemyTurn(); enableButtons()}, 2000);
     }
 }
 
-function attackAnders() {
+function enemyTurn() {
     enableButtons();
-    let attackPower = randInt(1, 3);
-    let newAndersHP = andersHP - attackPower;
+    action = randInt(1, 2);
+    if(action === 1){
+        if(counter === true) {
+            attackPower = Math.floor(determineAttackPower("enemy") / 2);
+            newAndersHP = andersHP - attackPower;
+            attackAndersText();
+        }
+        else {
+            attackPower = determineAttackPower("enemy");
+            newAndersHP = andersHP - attackPower;
+            attackAndersText();
+        }
+    }
+    else{
+        healEnemy = randInt(1, 2);
+        newEnemyHP = enemyHP + healEnemy;
+        enemyHP = newEnemyHP;
+        healText("enemy");
+    }
+}
+
+function attackEnemyText() {
+    enemyHP = newEnemyHP;
+    enemyDisplay.innerHTML = "HP: " + enemyHP;
+    description.textContent = "You did " + attackPower + " damage";
+    if(enemyHP <= 0) {
+        enemyDisplay.innerHTML = "HP: 0";
+    }
+}
+
+function attackAndersText() {
     andersHP = newAndersHP;
     andersDisplay.innerHTML = "HP: " + andersHP;
     description.textContent = "Your enemy did " + attackPower + " damage to you";
 }
 
+function healText(char) {
+    if(char === "anders") {
+        andersDisplay.innerHTML = "HP: " + andersHP;
+    }
+    else if(char === "enemy") {
+        description.textContent = "Your enemy healed " + healEnemy + " hp";
+        enemyDisplay.innerHTML = "HP: " + enemyHP;
+    }
+}
+
+function determineAttackPower(char) {
+    if(char === "anders") {
+        attackPower = randInt(3, 5);
+        return attackPower;
+    }
+    else if (char === "enemy"){
+        attackPower = randInt(4, 6);
+        return attackPower;
+    }
+}
+
 function summonEnemy() {
     let enemyImage = document.getElementById("enemyImage");
-    console.log(enemyImage.src);
     if(enemyImage.src === "http://127.0.0.1:5501/intro%20js/jrpg/bilder/karoliner_big.png") {
         enemyImage.src = "bilder/redcoat_big.png";
-        console.log("red");
         return;
     } 
     else {
         enemyImage.src = "bilder/karoliner_big.png";
-        console.log("blue");
     }
-    console.log(enemyImage.src);
+}
+
+function enemyDeath() {
+    if(enemyHP <= 0) {
+        description.textContent = "You defeated your enemy.";
+        setTimeout(function() {description.textContent = "Oh no! Here comes a new one"; enemyHP = 20;
+        enemyDisplay.innerHTML = "HP: " + enemyHP; summonEnemy(); enableButtons()}, 3000);
+    }
 }
 
 function disableButtons() {
