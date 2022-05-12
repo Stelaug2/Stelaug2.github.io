@@ -57,6 +57,8 @@ body {
 
 #enemyWeapon { grid-area: 2 / 4 / 3 / 5 ; position: relative; right: 70px; top: 40px;}
 
+#andersWeapon { grid-area: 2 / 3 / 3 / 4; position: relative; top: 40px; right: 50px;}
+
 .actionButton {
     width: 200px;
     align-items: center;
