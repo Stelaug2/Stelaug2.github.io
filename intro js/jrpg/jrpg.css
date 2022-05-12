@@ -32,14 +32,15 @@ body {
 }
 
 .parent {  
-    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 0px 0px;
     grid-auto-flow: row;
     height: 100vh;
 }
-  
+
+#header { grid-area: 1 / 3 / 2 / 5; text-align: center;}
+
 #description { grid-area: 1 / 6 / 5 / 7; }
 
 #action { grid-area: 1 / 1 / 5 / 6; }
@@ -53,6 +54,8 @@ body {
 #anders_display { grid-area: 2 / 2 / 3 / 3; }
 
 #enemy_display { grid-area: 2 / 5 / 3 / 6; }
+
+#enemyWeapon { grid-area: 2 / 4 / 3 / 5 ; position: relative; right: 70px; top: 40px;}
 
 .actionButton {
     width: 200px;

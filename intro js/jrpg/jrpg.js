@@ -18,6 +18,7 @@ redAnders.onclick = blueAnders.onclick = yellowAnders.onclick = pinkAnders.oncli
 let andersDisplay = document.getElementById("anders_display");
 let enemyDisplay = document.getElementById("enemy_display");
 let description = document.getElementById("description");
+let enemyWeapon = document.getElementById("enemyWeapon");
 
 let attackButton = document.getElementById("attack");
 let counterButton = document.getElementById("counter");
@@ -156,10 +157,12 @@ function summonEnemy() {
     let enemyImage = document.getElementById("enemyImage");
     if(enemyImage.getAttribute("src") === "bilder/karoliner_big.png") {
         enemyImage.src = "bilder/redcoat_big.png";
+        enemyWeapon.src = "bilder/musket_big.png";
         return;
     } 
     else {
         enemyImage.src = "bilder/karoliner_big.png";
+        enemyWeapon.src = "bilder/saber_big.png";
     }
 }
 
