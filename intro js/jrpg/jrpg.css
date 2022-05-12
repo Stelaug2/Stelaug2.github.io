@@ -2,7 +2,37 @@ body {
     margin: 0;
 }
 
-.parent {  display: grid;
+#chooseColour h1 {
+    text-align: center;
+    margin-top: 35px;
+}
+
+/*#chooseColour {
+    height: 100vh;
+}*/
+
+.andersPics {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+}
+
+.anders {
+    width: 20%;
+}
+
+.anders:hover {
+    box-shadow: black 0 15px 30px -5px;
+    border: 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom right, #090737, #390026, #640000);
+    transition: 0.5s;
+}
+
+.parent {  
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr;
     gap: 0px 0px;

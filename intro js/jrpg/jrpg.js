@@ -1,7 +1,23 @@
+document.getElementById("runGame").style.display = "none";
+let redAnders = document.getElementById("red");
+let blueAnders = document.getElementById("blue");
+let yellowAnders = document.getElementById("yellow");
+let pinkAnders = document.getElementById("pink");
+let andersImage = document.getElementById("andersImage");
+
+redAnders.onclick = blueAnders.onclick = yellowAnders.onclick = pinkAnders.onclick = function(evt) {
+    let anders = evt.target
+    let colour = anders.getAttribute("id");
+    andersImage.src = "bilder/anders_" + colour + "_big.png";
+    console.log(andersImage.getAttribute("src"));
+    document.getElementById("chooseColour").style.display = "none";
+    document.getElementById("runGame").style.display = "grid";
+}
+
+
 let andersDisplay = document.getElementById("anders_display");
 let enemyDisplay = document.getElementById("enemy_display");
 let description = document.getElementById("description");
-let andersImage = document.getElementById("andersImage");
 
 let attackButton = document.getElementById("attack");
 let counterButton = document.getElementById("counter");
@@ -33,8 +49,7 @@ function attackEnemy() {
     attackPower = determineAttackPower("anders");
     newEnemyHP = enemyHP - attackPower;
     attackEnemyText();
-    setTimeout(function() {enemyDeath()}, 1000)
-    setTimeout(function() { enemyTurn()}, 1000);
+    setTimeout(function() {enemyDeath()}, 1000);
 }
 
 function counterEnemy() {
@@ -47,10 +62,10 @@ function counterEnemy() {
         newEnemyHP = enemyHP - attackPower;
         description.textContent = "You countered your enemy's attack!";
         attackEnemyText();
-        setTimeout(function() {enemyDeath()}, 1000)
+        setTimeout(function() {enemyDeath()}, 1000);
         }
         else{
-            description.textContent = "Your counter failed"
+            description.textContent = "Your counter failed";
         }
         enableButtons();
     }, 2000);
@@ -132,14 +147,14 @@ function determineAttackPower(char) {
         return attackPower;
     }
     else if (char === "enemy"){
-        attackPower = randInt(4, 6);
+        attackPower = randInt(1, 2);
         return attackPower;
     }
 }
 
 function summonEnemy() {
     let enemyImage = document.getElementById("enemyImage");
-    if(enemyImage.src === "http://127.0.0.1:5501/intro%20js/jrpg/bilder/karoliner_big.png") {
+    if(enemyImage.getAttribute("src") === "bilder/karoliner_big.png") {
         enemyImage.src = "bilder/redcoat_big.png";
         return;
     } 
@@ -153,6 +168,9 @@ function enemyDeath() {
         description.textContent = "You defeated your enemy.";
         setTimeout(function() {description.textContent = "Oh no! Here comes a new one"; enemyHP = 20;
         enemyDisplay.innerHTML = "HP: " + enemyHP; summonEnemy(); enableButtons()}, 3000);
+    }
+    else {
+        enemyTurn();
     }
 }
 
