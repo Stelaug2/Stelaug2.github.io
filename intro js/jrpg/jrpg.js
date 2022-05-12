@@ -1,4 +1,6 @@
+//start screen with colour options
 document.getElementById("runGame").style.display = "none";
+document.getElementById("chooseWeapon").style.display = "none";
 let redAnders = document.getElementById("red");
 let blueAnders = document.getElementById("blue");
 let yellowAnders = document.getElementById("yellow");
@@ -11,7 +13,21 @@ redAnders.onclick = blueAnders.onclick = yellowAnders.onclick = pinkAnders.oncli
     andersImage.src = "bilder/anders_" + colour + "_big.png";
     console.log(andersImage.getAttribute("src"));
     document.getElementById("chooseColour").style.display = "none";
+    document.getElementById("chooseWeapon").style.display = "block";
+}
+
+//screen with weapon options
+let bababoey = document.getElementById("bababoey");
+let p90 = document.getElementById("p90");
+let andersWeapon = document.getElementById("andersWeapon");
+
+bababoey.onclick = p90.onclick = function(evt) {
+    let weapon = evt.target;
+    let weaponSource = weapon.getAttribute("id");
+    andersWeapon.src = "bilder/" + weaponSource + "_big.png";
+    document.getElementById("chooseWeapon").style.display = "none";
     document.getElementById("runGame").style.display = "grid";
+
 }
 
 
