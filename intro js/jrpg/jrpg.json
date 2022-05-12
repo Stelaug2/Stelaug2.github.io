@@ -1,0 +1,49 @@
+
+"anderses": [
+    {
+        "colour": "red",
+        "health": 20,
+        "minDamage": 3,
+        "maxDamage": 5,
+        "speed": 1
+    },
+    {
+        "colour": "blue",
+        "health": 20,
+        "minDamage": 3,
+        "maxDamage": 5,
+        "speed": 1
+    },
+    {
+        "colour": "yellow",
+        "health": 20,
+        "minDamage": 3,
+        "maxDamage": 5,
+        "speed": 1
+    },
+    {
+        "colour": "pink",
+        "health": 20,
+        "minDamage": 3,
+        "maxDamage": 5,
+        "speed": 1
+    }
+]
+
+"enemies": [
+    {
+        "name": "Karoliner",
+        "health": 20,
+        "minDamage": 2,
+        "maxDamage": 4,
+        "speed": 1
+    },
+    {
+        "name": "Readcoat",
+        "health": 20,
+        "minDamage": 2,
+        "maxDamage": 4,
+        "speed": 1
+    }
+]
+
