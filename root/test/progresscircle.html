@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*#myProgress {
+        width: 100%;
+        background-color: #ddd;
+        }*/
+
+        #myBar {
+            width: 25%;
+        }
+    </style>
+    <title>Progress but circle</title>
+</head>
+<body>
+
+    <div id="myProgress">
+        <svg id="myBar">
+            <circle cx="50" cy="50" r="50" fill="white" stroke="grey"/>
+        </svg>
+    </div>
+
+    <input type="number" id="input">
+      
+    <br>
+    <button onclick="move()">Click Me</button> 
+
+    <script>
+        var i = 0;
+        function move() {
+            if (i == 0) {
+                i = 1;
+                let elem = document.getElementById("myBar");
+                let width = document.getElementById("input").value;
+                if (width >= 100) {
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+
+        //https://codepen.io/nilsemil23/pen/xpjGWp delvis fylt svgobjekt
+        //https://www.html5gamedevs.com/topic/42781-solved-js-game-save-and-load/ lagring lokalt
+        //https://stackoverflow.com/questions/3559467/description-box-using-onmouseover description boks
+    </script>
+
+</body>
+</html>

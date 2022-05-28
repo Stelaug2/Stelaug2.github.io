@@ -1,36 +1,33 @@
 
-"anderses": [
+[
     {
-        "colour": "red",
+        "color": "red",
         "health": 20,
         "minDamage": 3,
         "maxDamage": 5,
         "speed": 1
     },
     {
-        "colour": "blue",
+        "color": "blue",
         "health": 20,
         "minDamage": 3,
         "maxDamage": 5,
         "speed": 1
     },
     {
-        "colour": "yellow",
+        "color": "yellow",
         "health": 20,
         "minDamage": 3,
         "maxDamage": 5,
         "speed": 1
     },
     {
-        "colour": "pink",
+        "color": "pink",
         "health": 20,
         "minDamage": 3,
         "maxDamage": 5,
         "speed": 1
-    }
-]
-
-"enemies": [
+    },
     {
         "name": "Karoliner",
         "health": 20,
@@ -44,6 +41,18 @@
         "minDamage": 2,
         "maxDamage": 4,
         "speed": 1
+    },
+    {
+        "type": "p90",
+        "minDamage": 1,
+        "maxDamage": 3,
+        "fireRate": 3
+    },
+    {
+        "type": "bababoey",
+        "minDamage": 5,
+        "maxDamage": 7,
+        "fireRate": 1
     }
 ]
 

@@ -1,4 +1,4 @@
-//start screen with colour options
+//start screen with coloroptions
 document.getElementById("runGame").style.display = "none";
 document.getElementById("chooseWeapon").style.display = "none";
 let redAnders = document.getElementById("red");
@@ -9,14 +9,14 @@ let andersImage = document.getElementById("andersImage");
 
 redAnders.onclick = blueAnders.onclick = yellowAnders.onclick = pinkAnders.onclick = function(evt) {
     let anders = evt.target
-    let colour = anders.getAttribute("id");
-    andersImage.src = "bilder/anders_" + colour + "_big.png";
+    let color = anders.getAttribute("id");
+    andersImage.src = "bilder/anders_" + color + "_big.png";
     console.log(andersImage.getAttribute("src"));
-    document.getElementById("chooseColour").style.display = "none";
+    document.getElementById("chooseColor").style.display = "none";
     document.getElementById("chooseWeapon").style.display = "block";
 }
 
-//screen with weapon options
+//screen with weaponoptions
 let bababoey = document.getElementById("bababoey");
 let p90 = document.getElementById("p90");
 let andersWeapon = document.getElementById("andersWeapon");
