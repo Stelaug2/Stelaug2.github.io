@@ -60,6 +60,10 @@ body {
 
 #andersWeapon { grid-area: 2 / 3 / 3 / 4; position: relative; top: 40px; right: 50px;}
 
+#level {grid-area: 3 / 2 / 4 / 6; position: relative; top: 130px;}
+
+#expBar {grid-area: 3 / 2 / 4 / 6; position: relative; top: 150px;}
+
 .actionButton {
     width: 200px;
     align-items: center;
@@ -87,3 +91,17 @@ body {
     height: 40%;
 }
 
+#expBar {
+    width: 100%;
+    height: 30px;
+    background-color: #ddd;
+}
+
+#theBar {
+    width: 0%;
+    height: 30px;
+    background-color: #000;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}

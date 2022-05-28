@@ -5,44 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /*#myProgress {
-        width: 100%;
-        background-color: #ddd;
-        }*/
-
-        #myBar {
-            width: 25%;
-        }
+        myProgress {color: black;}
     </style>
     <title>Progress but circle</title>
 </head>
 <body>
+    <!--Hentet fra https://stackoverflow.com/questions/26178095/svg-circle-animation-->
 
     <div id="myProgress">
-        <svg id="myBar">
-            <circle cx="50" cy="50" r="50" fill="white" stroke="grey"/>
+        <svg viewBox="0 0 300 300" preserveAspectRatio="none" style="width:300; height:300; top:0; left:0;">
+            <circle cx="100" cy="100" r="57" id="green-halo" fill="none" stroke="#00CC33" stroke-width="15" stroke-dasharray="0,20000" transform="rotate(-90,100,100)" />
+            <text id="myTimer" text-anchor="middle" x="100" y="110" style="font-size: 30px;" >0%</text>
         </svg>
     </div>
-
-    <input type="number" id="input">
       
     <br>
     <button onclick="move()">Click Me</button> 
 
     <script>
-        var i = 0;
         function move() {
-            if (i == 0) {
-                i = 1;
-                let elem = document.getElementById("myBar");
-                let width = document.getElementById("input").value;
-                if (width >= 100) {
-                    i = 0;
-                } else {
-                    width++;
-                    elem.style.width = width + "%";
+            // math trick 2*pi*57 = 358, must be less than 360 degree 
+            var circle = document.getElementById('green-halo');
+            var myTimer = document.getElementById('myTimer');
+            var interval = 30;
+            var angle = 0;
+            var angle_increment = 6;
+
+            window.timer = window.setInterval(function() {
+                console.log(angle)
+                circle.setAttribute("stroke-dasharray", angle + ", 20000");
+                myTimer.innerHTML = parseInt(angle / 360 * 100) + '%';
+
+                if (angle >= 360) {
+                window.clearInterval(window.timer);
                 }
-            }
+                angle += angle_increment;
+            }.bind(this), interval);
         }
 
         //https://codepen.io/nilsemil23/pen/xpjGWp delvis fylt svgobjekt

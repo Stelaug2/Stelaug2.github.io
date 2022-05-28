@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress bar</title>
+    <style>
+       #myProgress {
+            width: 100%;
+            background-color: #ddd;
+        }
+
+        #myBar {
+            width: 0%;
+            height: 30px;
+            background-color: #04AA6D;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript Progress Bar</h1>
+
+    <div id="level"></div>
+    <div id="expBar">
+        <div id="theBar">0%</div>
+    </div>
+
+    <br>
+    <button onclick="move()">Click Me</button> 
+
+    <script>
+        let levelText = document.getElementById("level");
+        let level = 1;
+        levelText.innerHTML = "Level: " + level;
+
+        let width = 0;
+        let value = width + 20;
+
+        var i = 0;
+        function gainEXP() {
+            if (i === 0) {
+                i = 1;
+                var elem = document.getElementById("myBar");
+                var id = setInterval(frame, 20);
+                function frame() {
+                    if (width === value) {
+                        clearInterval(id)
+                        width = value;
+                        console.log(width);
+                        value = width + 20;
+                        console.log(value);
+                        i = 0;
+                        if(width >= 100) {
+                            clearInterval(id);
+                            i = 0;
+                            width = 0;
+                            value = 0;
+                            console.log(width, value);
+                            level++;
+                            levelText.innerHTML = "Level: " + level;
+                            elem.style.width = width + "%";
+                            elem.innerHTML = width  + "%";
+                            alert("You leveled up!");
+                        }
+                    }
+                    else {
+                        width++;
+                        elem.style.width = width + "%";
+                        elem.innerHTML = width  + "%";
+                    }
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>

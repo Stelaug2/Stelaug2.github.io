@@ -30,6 +30,13 @@ bababoey.onclick = p90.onclick = function(evt) {
 
 }
 
+//test on
+let test = false
+document.getElementById("test").onclick = function() {
+    console.log("test");
+    test = true;
+}
+
 
 let andersDisplay = document.getElementById("anders_display");
 let enemyDisplay = document.getElementById("enemy_display");
@@ -98,7 +105,7 @@ function healAnders() {
         andersHP = newAndersHP;
         description.textContent = "Heal failed. You only healed " + healAmount + " hp";
         healText("anders")
-        setTimeout(function() {enemyTurn(); enableButtons()}, 2000);
+        setTimeout(function() {enemyTurn();}, 2000);
     }
     else {
         healAmount = randInt(6, 10);
@@ -106,30 +113,32 @@ function healAnders() {
         andersHP = newAndersHP;
         description.textContent = "Heal successfull. You healed " + healAmount + " hp";
         healText("anders")
-        setTimeout(function() {enemyTurn(); enableButtons()}, 2000);
+        setTimeout(function() {enemyTurn();}, 2000);
     }
 }
 
 function enemyTurn() {
     enableButtons();
-    action = randInt(1, 2);
-    if(action === 1){
-        if(counter === true) {
-            attackPower = Math.floor(determineAttackPower("enemy") / 2);
-            newAndersHP = andersHP - attackPower;
-            attackAndersText();
+    if(test === false){
+        action = randInt(1, 2);
+        if(action === 1){
+            if(counter === true) {
+                attackPower = Math.floor(determineAttackPower("enemy") / 2);
+                newAndersHP = andersHP - attackPower;
+                attackAndersText();
+            }
+            else {
+                attackPower = determineAttackPower("enemy");
+                newAndersHP = andersHP - attackPower;
+                attackAndersText();
+            }
         }
-        else {
-            attackPower = determineAttackPower("enemy");
-            newAndersHP = andersHP - attackPower;
-            attackAndersText();
+        else{
+            healEnemy = randInt(1, 2);
+            newEnemyHP = enemyHP + healEnemy;
+            enemyHP = newEnemyHP;
+            healText("enemy");
         }
-    }
-    else{
-        healEnemy = randInt(1, 2);
-        newEnemyHP = enemyHP + healEnemy;
-        enemyHP = newEnemyHP;
-        healText("enemy");
     }
 }
 
@@ -170,6 +179,7 @@ function determineAttackPower(char) {
 }
 
 function summonEnemy() {
+    enableButtons();
     let enemyImage = document.getElementById("enemyImage");
     if(enemyImage.getAttribute("src") === "bilder/karoliner_big.png") {
         enemyImage.src = "bilder/redcoat_big.png";
@@ -185,11 +195,56 @@ function summonEnemy() {
 function enemyDeath() {
     if(enemyHP <= 0) {
         description.textContent = "You defeated your enemy.";
+        gainEXP();
         setTimeout(function() {description.textContent = "Oh no! Here comes a new one"; enemyHP = 20;
-        enemyDisplay.innerHTML = "HP: " + enemyHP; summonEnemy(); enableButtons()}, 3000);
+        enemyDisplay.innerHTML = "HP: " + enemyHP; summonEnemy();}, 3000);
     }
     else {
         enemyTurn();
+    }
+}
+
+//Expbar and level
+let levelText = document.getElementById("level");
+let level = 1;
+levelText.innerHTML = "Level: " + level;
+
+let width = 0;
+let value = width + 20;
+
+var i = 0;
+function gainEXP() {
+    if (i === 0) {
+        i = 1;
+        var bar = document.getElementById("theBar");
+        var id = setInterval(frame, 20);
+        function frame() {
+            if (width === value) {
+                clearInterval(id)
+                width = value;
+                console.log(width);
+                value = width + 20;
+                console.log(value);
+                i = 0;
+                if(width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                    width = 0;
+                    value = 0;
+                    console.log(width, value);
+                    level++;
+                    levelText.innerHTML = "Level: " + level;
+                    bar.style.width = width + "%";
+                    bar.innerHTML = width  + "%";
+                    alert("You leveled up!");
+                }
+            }
+            else {
+                width++;
+                bar.style.width = width + "%";
+                bar.innerHTML = width  + "%";
+            }
+        }
     }
 }
 
