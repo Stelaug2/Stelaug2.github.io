@@ -71,11 +71,11 @@ healButton.addEventListener("click", healAnders);
 function attackEnemy() {
     counter = false;
     //animation
-    let id = setInterval(move, 1);
+    let id = setInterval(moveAnders, 1);
     let distance = 0;
     let weapDistance = 50;
     let j = 0
-    function move() {
+    function moveAnders() {
         if(j === 0) {
             distance--;
             weapDistance--;
@@ -111,11 +111,37 @@ function counterEnemy() {
     disableButtons()
     setTimeout(function(){
         if(action === 1) {
-        attackPower = Math.floor(determineAttackPower("anders") * 1.5);
-        newEnemyHP = enemyHP - attackPower;
-        description.textContent = "You countered your enemy's attack!";
-        attackEnemyText();
-        setTimeout(function() {enemyDeath()}, 1000);
+            let id = setInterval(moveAnders, 1);
+            let distance = 0;
+            let weapDistance = 50;
+            let j = 0
+            function moveAnders() {
+                if(j === 0) {
+                    distance--;
+                    weapDistance--;
+                    andersImage.style.right = distance + "px";
+                    andersWeapon.style.right = weapDistance + "px";
+                    if(distance <= -50) {
+                        j = 1;
+                    }
+                }
+                else{
+                    distance++;
+                    weapDistance++;
+                    andersImage.style.right = distance + "px";
+                    andersWeapon.style.right = weapDistance + "px";
+                    if(distance === 0) {
+                        clearInterval(id);
+                        j = 0;
+                    }
+                }
+
+            }
+            attackPower = Math.floor(determineAttackPower("anders") * 1.5);
+            newEnemyHP = enemyHP - attackPower;
+            description.textContent = "You countered your enemy's attack!";
+            attackEnemyText();
+            setTimeout(function() {enemyDeath()}, 1000);
         }
         else{
             description.textContent = "Your counter failed";
@@ -266,7 +292,7 @@ function enemyDeath() {
         setTimeout(function() {description.textContent = "Oh no! Here comes a new one"; enemyHP = 20;
         enemyDisplay.innerHTML = "HP: " + enemyHP; summonEnemy();}, 3000);
     }
-    else {
+    else if(counter === false) {
         enemyTurn();
     }
 }
