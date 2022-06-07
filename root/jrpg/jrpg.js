@@ -40,6 +40,7 @@ document.getElementById("test").onclick = function() {
 
 let andersDisplay = document.getElementById("anders_display");
 let enemyDisplay = document.getElementById("enemy_display");
+let enemyImage = document.getElementById("enemyImage");
 let description = document.getElementById("description");
 let enemyWeapon = document.getElementById("enemyWeapon");
 
@@ -69,11 +70,39 @@ healButton.addEventListener("click", healAnders);
 
 function attackEnemy() {
     counter = false;
+    //animation
+    let id = setInterval(move, 1);
+    let distance = 0;
+    let weapDistance = 50;
+    let j = 0
+    function move() {
+        if(j === 0) {
+            distance--;
+            weapDistance--;
+            andersImage.style.right = distance + "px";
+            andersWeapon.style.right = weapDistance + "px";
+            if(distance <= -50) {
+                j = 1;
+            }
+        }
+        else{
+            distance++;
+            weapDistance++;
+            andersImage.style.right = distance + "px";
+            andersWeapon.style.right = weapDistance + "px";
+            if(distance === 0) {
+                clearInterval(id);
+                j = 0;
+            }
+        }
+
+    }
+    //animation end
     disableButtons();
     attackPower = determineAttackPower("anders");
     newEnemyHP = enemyHP - attackPower;
-    attackEnemyText();
-    setTimeout(function() {enemyDeath()}, 1000);
+    setTimeout(function() {attackEnemyText()}, 500);
+    setTimeout(function() {enemyDeath()}, 1500);
 }
 
 function counterEnemy() {
@@ -95,25 +124,34 @@ function counterEnemy() {
     }, 2000);
 }
 
+//healing
+let potions = 3;
+
 function healAnders() {
-    counter = false;
-    disableButtons()
-    let healChance = randInt(0, 100);
-    if(healChance >= 20) {
-        healAmount = randInt(2, 3); 
-        newAndersHP = andersHP + healAmount;
-        andersHP = newAndersHP;
-        description.textContent = "Heal failed. You only healed " + healAmount + " hp";
-        healText("anders")
-        setTimeout(function() {enemyTurn();}, 2000);
+    if(potions > 0) {
+        counter = false;
+        disableButtons()
+        let healChance = randInt(0, 100);
+        if(healChance >= 20) {
+            healAmount = randInt(2, 3); 
+            newAndersHP = andersHP + healAmount;
+            andersHP = newAndersHP;
+            description.textContent = "Heal failed. You only healed " + healAmount + " hp";
+            healText("anders")
+            setTimeout(function() {enemyTurn();}, 2000);
+        }
+        else {
+            healAmount = randInt(6, 10);
+            newAndersHP = andersHP + healAmount;
+            andersHP = newAndersHP;
+            description.textContent = "Heal successfull. You healed " + healAmount + " hp";
+            healText("anders")
+            setTimeout(function() {enemyTurn();}, 2000);
+        }
+        potions--;
     }
     else {
-        healAmount = randInt(6, 10);
-        newAndersHP = andersHP + healAmount;
-        andersHP = newAndersHP;
-        description.textContent = "Heal successfull. You healed " + healAmount + " hp";
-        healText("anders")
-        setTimeout(function() {enemyTurn();}, 2000);
+        alert("You have no more attempts.");
     }
 }
 
@@ -122,16 +160,45 @@ function enemyTurn() {
     if(test === false){
         action = randInt(1, 2);
         if(action === 1){
-            if(counter === true) {
-                attackPower = Math.floor(determineAttackPower("enemy") / 2);
-                newAndersHP = andersHP - attackPower;
-                attackAndersText();
+            let id = setInterval(moveEnemy, 1);
+            let distance = 0;
+            let weapDistance = 70;
+            let j = 0
+            function moveEnemy() {
+                if(j === 0) {
+                    distance++;
+                    weapDistance++;
+                    enemyImage.style.right = distance + "px";
+                    enemyWeapon.style.right = weapDistance + "px";
+                    if(distance >= 50) {
+                        j = 1;
+                    }
+                    console.log(enemyImage.style.right);
+                }
+                else{
+                    distance--;
+                    weapDistance--;
+                    enemyImage.style.right = distance + "px";
+                    enemyWeapon.style.right = weapDistance + "px";
+                    if(distance === 0) {
+                        clearInterval(id);
+                        j = 0;
+                    }
+                }
+
             }
-            else {
-                attackPower = determineAttackPower("enemy");
-                newAndersHP = andersHP - attackPower;
-                attackAndersText();
-            }
+            setTimeout(function() {
+                if(counter === true) {
+                    attackPower = Math.floor(determineAttackPower("enemy") / 2);
+                    newAndersHP = andersHP - attackPower;
+                    attackAndersText();
+                }
+                else {
+                    attackPower = determineAttackPower("enemy");
+                    newAndersHP = andersHP - attackPower;
+                    attackAndersText();
+                }
+            }, 500)
         }
         else{
             healEnemy = randInt(1, 2);
@@ -212,12 +279,12 @@ levelText.innerHTML = "Level: " + level;
 let width = 0;
 let value = width + 20;
 
-var i = 0;
+let i = 0;
 function gainEXP() {
     if (i === 0) {
         i = 1;
-        var bar = document.getElementById("theBar");
-        var id = setInterval(frame, 20);
+        let bar = document.getElementById("theBar");
+        let id = setInterval(frame, 20);
         function frame() {
             if (width === value) {
                 clearInterval(id)
@@ -264,4 +331,10 @@ function randInt(min, max) {
     max = Math.floor(max);
     min = Math.ceil(min);
     return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+//Animations
+function back(timeFraction) {
+    let x = 1.5
+    return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x)
 }
